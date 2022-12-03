@@ -1,0 +1,46 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,41,25)
+  Text = ("Lucky 7!")
+  { Spin Button
+    MoveScaled(33,19,6,4)
+    Foreground = Color.Foreground
+    Text = ("Spin")
+  }
+  { D1 LCDLabel
+    MoveScaled(2,2,11,15)
+    Background = Color.Black
+    Foreground = Color.White
+    Text = ("0")
+    Alignment = Align.Center
+    Border = True
+  }
+  { D2 LCDLabel
+    MoveScaled(15,2,11,15)
+    Background = Color.Black
+    Foreground = Color.White
+    Text = ("0")
+    Alignment = Align.Center
+    Border = True
+  }
+  { D3 LCDLabel
+    MoveScaled(28,2,11,15)
+    Background = Color.Black
+    Foreground = Color.White
+    Text = ("0")
+    Alignment = Align.Center
+    Border = True
+  }
+  { Timer1 #Timer
+    #MoveScaled(0,18)
+    Delay = 16
+  }
+  { ProgressBar1 ProgressBar
+    MoveScaled(2,19,23,4)
+  }
+  { Reset Button
+    MoveScaled(27,19,4,4)
+    Text = ("R")
+  }
+}

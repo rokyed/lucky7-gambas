@@ -1,0 +1,100 @@
+' Gambas class file
+
+Private dint1 As Integer
+Private dint2 As Integer
+Private dint3 As Integer
+
+Private life As Float = 0.5
+
+Private cycles As Integer
+
+
+Public Sub Spin_Click()
+  If (life <= 0) Then
+    Return 
+  Endif
+  If (life == Null) Then
+    life = 0.5
+  Endif
+  cycles = 40
+  Timer1.Delay = 1
+  Timer1.Start()
+  Spin.Visible = False
+End
+
+
+Public Sub Timer1_Timer()
+  If (cycles <= 1) Then
+    Timer1.Stop()
+  Endif
+  
+  cycles = cycles - 1
+  Timer1.Delay = Timer1.Delay + 2
+  
+  If (cycles >= 6) Then
+    dint1 = Rand(0, 9)
+  Endif
+  If (cycles >= 3) Then
+    dint2 = Rand(0, 9)
+  Endif
+
+  dint3 = Rand(0, 9)
+  
+  
+  
+  D1.Text = dint1
+  D2.Text = dint2
+  D3.Text = dint3
+  
+  D1.Foreground = Color.HSV(25 * dint1, 255, 255)
+  D2.Foreground = Color.HSV(25 * dint2, 255, 255)
+  D3.Foreground = Color.HSV(25 * dint3, 255, 255)
+
+  If (cycles == 0) Then
+    Spin.Visible = True
+    If (dint1 == dint2 And dint2 == dint3) Then
+      Select Case dint1
+        Case 7
+          life += 0.5
+        Case 1
+          life += 0.1 
+        Case 3
+          life += 0.1 
+        Case 5
+          life += 0.2 
+        Case 9
+          life += 0.2   
+        Case Else 
+          life += 0.05
+      End Select
+    Else If (dint1 == dint2 Or dint2 == dint3 Or dint3 == dint1) 
+      life += 0.01
+    Else 
+      life -= 0.01
+    Endif
+  Endif 
+
+  ProgressBar1.Value = life
+End
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub Reset_Click()
+  cycles = 0
+  Timer1.Stop()
+  Spin.Visible = True
+  D1.Text = 0
+  D2.Text = 0
+  D3.Text = 0
+  D1.Foreground = Color.White
+  D2.Foreground = Color.White
+  D3.Foreground = Color.White
+
+  life = 0.5
+  
+
+End
